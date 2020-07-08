@@ -1,11 +1,7 @@
 #!/usr/bin/python3
 import requests
-import logging
 
 class StreamCamel:
-    def __init__(self, logger):
-        self.logger = logger
-
     def __fetch(self, url):
         max_retry = 3
         attempt = 1
@@ -17,13 +13,11 @@ class StreamCamel:
                 print('timed out')
                 attempt = attempt + 1
                 if attempt > max_retry:
-                    print('giving up')
-                    self.logger.critical("HTTP Exception: {}".format(err))
+                    print("HTTP Exception: {}".format(err))
                     fakeData = ""
                     return fakeData
                 else:
-                    print('retrying')
-                    self.logger.warning("(Going to retry) HTTP Exception: {}".format(err))
+                    print("(Going to retry) HTTP Exception: {}".format(err))
 
         return r.json()
 
