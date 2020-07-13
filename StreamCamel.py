@@ -22,16 +22,16 @@ class StreamCamel:
         return r.json()
 
     def top_companies(self):
-        return self.__fetch('https://api.streamcamel.com/companies?limit=1000000')
+        return self.__fetch('https://api.streamcamel.com/companies?limit=5000')
 
     def top_games(self):
-        return self.__fetch('https://api.streamcamel.com/games?limit=1000000')
+        return self.__fetch('https://api.streamcamel.com/games?limit=5000')
 
     def top_streamers(self):
-        return self.__fetch('https://api.streamcamel.com/users?limit=1000000')
+        return self.__fetch('https://api.streamcamel.com/users?limit=5000')
 
     def missing_games(self):
-        return self.__fetch('https://api.streamcamel.com/games_without_igdb?limit=1000000')
+        return self.__fetch('https://api.streamcamel.com/games_without_igdb?limit=5000')
 
     def users_stats(self):
-        return self.__fetch('https://api.streamcamel.com/users_stats?limit=1000000')
+        return self.__fetch('https://api.streamcamel.com/users_stats?limit=5000')
