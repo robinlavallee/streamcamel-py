@@ -6,9 +6,9 @@ sys.path.insert(1, os.path.abspath('../streamcamel'))
 from streamcamel import StreamCamel
 
 st = StreamCamel()
-# companies = st.top_companies()
-# for company in companies:
-#     print(repr(company))
+companies = st.top_companies()
+for company in companies:
+    print(repr(company))
 
 games = st.top_games(50)
 for game in games:
