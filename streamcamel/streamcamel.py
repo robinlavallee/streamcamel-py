@@ -53,7 +53,7 @@ class StreamCamel:
     def top_games(self, count=sys.maxsize):
         return self.__top_anything(count, 100, 'games')
 
-    def top_streamers(self, count):
+    def top_streamers(self, count=sys.maxsize):
         return self.__top_anything(count, 500, 'users')
 
     def missing_games(self):
