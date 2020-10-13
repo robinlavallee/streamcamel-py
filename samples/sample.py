@@ -2,7 +2,7 @@ import sys
 import os
 
 # TODO: There must be a better way. :)
-sys.path.insert(1, os.path.abspath('../streamcamel'))
+sys.path.insert(1, os.path.abspath('..'))
 from streamcamel import StreamCamel
 
 st = StreamCamel()
