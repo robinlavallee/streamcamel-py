@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import requests
 import sys
+import urllib.parse
 
 class StreamCamel:
     def __fetch(self, url):
@@ -61,3 +62,12 @@ class StreamCamel:
 
     def users_stats(self):
         return self.__fetch('https://api.streamcamel.com/users_stats?limit=5000')
+
+    def games_stats(self, company=None):
+        if company is None:
+            return self.__fetch('https://api.streamcamel.com/games_stats?limit=5000')
+        else:
+            company_encoded = urllib.parse.quote(company)
+            return self.__fetch('https://api.streamcamel.com/games_stats?limit=5000&company=' + company_encoded)
+
+        
