@@ -24,7 +24,7 @@ class StreamCamel:
 
         return r.json()
 
-    def __top_anything(self, count, max_count, type):
+    def __page_anything(self, count, max_count, route):
         remaining = count
         cursor = ""
 
@@ -32,7 +32,7 @@ class StreamCamel:
 
         while (remaining > 0):
             batch_size = min(remaining, max_count)
-            json = self.__fetch('https://api.streamcamel.com/{}?limit={}&cursor={}'.format(type, batch_size, cursor))
+            json = self.__fetch('https://api.streamcamel.com/{}?limit={}&cursor={}'.format(route, batch_size, cursor))
 
             if 'data' in json:
                 final_json += json['data']
@@ -49,13 +49,16 @@ class StreamCamel:
         return final_json
 
     def top_companies(self, count=sys.maxsize):
-        return self.__top_anything(count, 100, 'companies')
+        return self.__page_anything(count, 100, 'companies')
 
     def top_games(self, count=sys.maxsize):
-        return self.__top_anything(count, 100, 'games')
+        return self.__page_anything(count, 100, 'games')
 
     def top_streamers(self, count=sys.maxsize):
-        return self.__top_anything(count, 500, 'users')
+        return self.__page_anything(count, 500, 'users')
+
+    def company_games(self, company, count=sys.maxsize):
+        return self.__page_anything(count, 100, 'companies/{}/games'.format(company))
 
     def missing_games(self):
         return self.__fetch('https://api.streamcamel.com/games_without_igdb?limit=5000')
