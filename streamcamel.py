@@ -48,10 +48,10 @@ class StreamCamel:
 
         return final_json
 
-    def top_companies(self, count=sys.maxsize):
+    def companies(self, count=sys.maxsize):
         return self.__page_anything(count, 100, 'companies')
 
-    def top_games(self, count=sys.maxsize):
+    def games(self, count=sys.maxsize):
         return self.__page_anything(count, 100, 'games')
 
     def top_streamers(self, count=sys.maxsize):
